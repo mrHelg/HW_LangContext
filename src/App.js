@@ -19,7 +19,7 @@ function App(){
   }
   return <>
   <Ciao name={user.name} id={user.id}/>
-  <UserCard user={user2}/>
+  <UserCard />
   <UsersList users={[user2, user3]}/>
   </>;
   
