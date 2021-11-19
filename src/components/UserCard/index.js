@@ -16,7 +16,7 @@ function UserCard (props){
 }
 UserCard.defaultProps = {
   userSelector:()=>{},
-  user:{id:0, fname:'Qwe', isSelected:true}
+  user:{id:null, fname:'Noname', isSelected:false}
 }
 export const userPropTypes = {
   id:PropTypes.number.isRequired,
