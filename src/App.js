@@ -1,32 +1,20 @@
 import './App.css';
 import React from 'react';
-import Container from './components/Grid/Container';
-import Row from './components/Grid/Row';
-import Col from './components/Grid/Col';
 import Ciao from './components/CiaoSection/Ciao';
 import Calendar from './components/Calendar';
+import FlexContainer from './components/FlexContainer';
 
 function App(){
   return <>
-    <Container>
-      <Row>
-        <Col colNum={6}>
-          <Ciao id={2} name="Elon"/>
-        </Col>
-        <Col colNum={6}>
-        <Ciao id={3} name="Elen"/>
-        </Col>
-      </Row>
-      <Row>
-        <Col colNum={6}>
-          <Ciao id={2} name="Elon"/>
-        </Col>
-        <Col colNum={6}>
-        <Ciao id={3} name="Elen"/>
-        </Col>
-      </Row>
-    </Container>
-    <Calendar />
+    <FlexContainer jc='space-between' 
+    ai='center' fd='column' fw='wrap' 
+    title='@@@' style={{border:'1px solid red'}}
+    >
+      <Ciao id={2} name="Elon"/>
+      <Ciao id={3} name="Elen"/>
+      <Ciao id={4} name="Alex"/>
+    </FlexContainer>
+    {/* <Calendar /> */}
   </>;
 }
 export default App;
