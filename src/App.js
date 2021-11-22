@@ -1,16 +1,37 @@
 import './App.css';
 import React from 'react';
-import SignInForm from './components/SignInForm';
-import Calendar from './components/Calendar';
-import Ciao from './components/CiaoSection/Ciao';
+
+const List = (props)=>{
+  const {text, title, children} = props;
+  return (
+    <>
+    <h2>{text}</h2>
+    <ul title={title}>
+      {children}
+    </ul>
+    <p>asdfgh</p>
+    </>
+  );
+}
 
 function App(){
  
+  
   return <>
-  <Calendar/>
-  <Ciao id={1} name="Elon"/>
-  <SignInForm />
+    <List title="111" text="qwerty">
+      <li>1</li>
+      <li>2</li>
+    </List>
   </>;
   
 }
 export default App;
+
+
+
+
+
+// return React.createElement('ul',{title:"qwerty"},
+    // React.createElement('li',{},'1'),
+    // React.createElement('li',{},'2')
+    // );
