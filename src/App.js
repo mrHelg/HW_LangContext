@@ -1,37 +1,33 @@
 import './App.css';
 import React from 'react';
-
-const List = (props)=>{
-  const {text, title, children} = props;
-  return (
-    <>
-    <h2>{text}</h2>
-    <ul title={title}>
-      {children}
-    </ul>
-    <p>asdfgh</p>
-    </>
-  );
-}
+import Container from './components/Grid/Container';
+import Row from './components/Grid/Row';
+import Col from './components/Grid/Col';
+import Ciao from './components/CiaoSection/Ciao';
+import Calendar from './components/Calendar';
 
 function App(){
- 
-  
   return <>
-    <List title="111" text="qwerty">
-      <li>1</li>
-      <li>2</li>
-    </List>
+    <Container>
+      <Row>
+        <Col colNum={6}>
+          <Ciao id={2} name="Elon"/>
+        </Col>
+        <Col colNum={6}>
+        <Ciao id={3} name="Elen"/>
+        </Col>
+      </Row>
+      <Row>
+        <Col colNum={6}>
+          <Ciao id={2} name="Elon"/>
+        </Col>
+        <Col colNum={6}>
+        <Ciao id={3} name="Elen"/>
+        </Col>
+      </Row>
+    </Container>
+    <Calendar />
   </>;
-  
 }
 export default App;
 
-
-
-
-
-// return React.createElement('ul',{title:"qwerty"},
-    // React.createElement('li',{},'1'),
-    // React.createElement('li',{},'2')
-    // );

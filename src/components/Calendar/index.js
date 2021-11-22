@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { format, add, startOfMonth} from 'date-fns';
+import Container from '../Grid/Container';
 
 class Calendar extends Component {
   constructor(props) {
@@ -18,13 +19,13 @@ class Calendar extends Component {
   render() {
     const {day} = this.state;
     return (
-      <div>
+      <Container>
         <p>{format(startOfMonth(day),"'month start at:' cccc")}</p>
         <p>{format(day,"dd MMMM yy'year, 'cccc")}</p>
         <button onClick={()=>{this.btnHandler({days:1})}}>Add 1 day</button>
         <button onClick={()=>{this.btnHandler({weeks:1})}}>Add 1 week</button>
         <button onClick={()=>{this.btnHandler({months:1})}}>Add 1 month</button>
-      </div>
+      </Container>
     );
   }
 }
