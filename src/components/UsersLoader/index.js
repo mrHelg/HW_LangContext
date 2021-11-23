@@ -9,14 +9,14 @@ class UsersLoader extends Component {
       users:[],
       isFetching: false,
       isError: false,
+      currentPage: 1,
     }
+
   }
 
-  componentDidMount(){
-    this.setState({
-      isFetching: true,
-    })
-    fetch('https://randomuser.me/api/?results=10&page=1&seed=users')
+  load = () => {
+    const {currentPage} = this.state;
+    fetch(`https://randomuser.me/api/?results=2&page=${currentPage}&seed=users`)
       .then((response)=>response.json())
       .then((data)=>this.setState({
         users:data.results,
@@ -28,9 +28,32 @@ class UsersLoader extends Component {
         isFetching: false,
       }))
   }
-  
+
+  componentDidMount(){
+    this.setState({
+      isFetching: true,
+    })
+    this.load();
+  }
+  componentDidUpdate(prevProps, prevState){
+    const {currentPage} = this.state;
+    if(currentPage!==prevState.currentPage){
+      this.load();
+    }
+  }
+
+  prevPage = () => {
+    if(this.state.currentPage>1){
+      this.setState((state,props)=>
+      ({currentPage:state.currentPage-1})
+      );
+    }
+  }
+  nextPage = () => this.setState((state,props)=>
+  ({currentPage:state.currentPage+1}));
+
   render() {
-    const {users, isFetching, isError} = this.state;
+    const {users, isFetching, isError, currentPage} = this.state;
     if(isError){
       return <div>Error</div>;
     }
@@ -39,6 +62,9 @@ class UsersLoader extends Component {
     }
     return <div>
       <h2>Users list</h2>
+      <button onClick={this.prevPage}>&lt;</button>
+      <button onClick={this.nextPage}>&gt;</button>
+      <p>current page: {currentPage}</p>
       <ul>
         {users.map((user)=>(
           <li key={user.login.uuid}>{JSON.stringify(user,null, 7)}</li>
