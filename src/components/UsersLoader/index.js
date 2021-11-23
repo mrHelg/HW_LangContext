@@ -54,13 +54,17 @@ class UsersLoader extends Component {
 
   render() {
     const {users, isFetching, isError, currentPage} = this.state;
-    if(isError){
-      return <div>Error</div>;
-    }
-    if(isFetching){
-      return <div>Loading...</div>;
-    }
+    // if(isError){
+    //   return <div>Error</div>;
+    // }
+    // if(isFetching){
+    //   return <div>Loading...</div>;
+    // }
     return <div>
+      
+      {isFetching && <div>Loading...</div>}
+      {isError && <div>Error</div>}
+      
       <h2>Users list</h2>
       <button onClick={this.prevPage}>&lt;</button>
       <button onClick={this.nextPage}>&gt;</button>
