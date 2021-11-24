@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getUsers } from '../../api';
+import Spinner from '../Spinner';
 
 
 class UsersLoader extends Component {
@@ -18,9 +19,11 @@ class UsersLoader extends Component {
   load = () => {
     const {currentPage} = this.state;
     getUsers({page:currentPage, res:3})
-      .then((data)=>this.setState({
-        users:data.results,
-      }))
+      .then((data)=>{
+        return (data.error)? 
+          this.setState({isError: true}):
+            this.setState({users:data.results});
+      })
       .catch(()=>this.setState({
         isError: true
       }))
@@ -52,11 +55,15 @@ class UsersLoader extends Component {
   nextPage = () => this.setState((state,props)=>
   ({currentPage:state.currentPage+1}));
 
+  createUser = (user)=>(
+    <li key={user.login.uuid}>{JSON.stringify(user,null, 7)}</li>
+  )
+
   render() {
     const {users, isFetching, isError, currentPage} = this.state;
     return <div>
       
-      {isFetching && <div>Loading...</div>}
+      {isFetching && <div><Spinner /></div>}
       {isError && <div>Error</div>}
       
       <h2>Users list</h2>
@@ -64,12 +71,9 @@ class UsersLoader extends Component {
       <button onClick={this.nextPage}>&gt;</button>
       <p>current page: {currentPage}</p>
       <ul>
-        {users.map((user)=>(
-          <li key={user.login.uuid}>{JSON.stringify(user,null, 7)}</li>
-        ))}
+        {users.map(this.createUser)}
       </ul>
     </div>;
-
   }
 }
 
