@@ -54,12 +54,6 @@ class UsersLoader extends Component {
 
   render() {
     const {users, isFetching, isError, currentPage} = this.state;
-    // if(isError){
-    //   return <div>Error</div>;
-    // }
-    // if(isFetching){
-    //   return <div>Loading...</div>;
-    // }
     return <div>
       
       {isFetching && <div>Loading...</div>}
