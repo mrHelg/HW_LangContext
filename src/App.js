@@ -5,6 +5,7 @@ import Calendar from './components/Calendar';
 import SignInForm from './components/SignInForm';
 import Dashboard from './pages/Dashboard';
 import CounterPage from './pages/CounterPage';
+import LoaderPage from './pages/LoaderPage';
 
 function App(){
   return <>
@@ -17,10 +18,12 @@ function App(){
         <li><Link to="/dash/messages">messages</Link></li>
         <li><Link to="/dash/tasks">tasks</Link></li>
         <li><Link to="/counter">counter</Link></li>
+        <li><Link to="/load">loader</Link></li>
       </ul>
     </nav>
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/load" element={<LoaderPage />} />
       <Route path="/counter" element={<CounterPage />} />
       <Route path="/calendar" element={<p>Calendar</p>} />
       <Route path="/sign-in" element={<SignInForm />} />
