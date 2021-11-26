@@ -14,9 +14,9 @@ class Counter extends Component {
   decrement = ()=>{
     this.setState((state, props)=>({count: state.count-props.step}))
   }
+  
   shouldComponentUpdate(nextProps, nextState){
     return (nextProps.step===this.props.step);
-    //return (nextState.count!==this.state.count);
   }
   
   render() {
