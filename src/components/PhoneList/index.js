@@ -19,11 +19,11 @@ class PhoneList extends Component {
   render() {
     const {phones} = this.state;
     return (
-      <ul>
+      <div>
         {phones.map((phone)=>(
-          <li key={phone.id}>{phone.name} {phone.price}</li>
+          <article key={phone.id}>{phone.name} {phone.price}</article>
         ))}
-      </ul>
+      </div>
     );
   }
 }
