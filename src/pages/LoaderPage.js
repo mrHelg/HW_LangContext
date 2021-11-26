@@ -16,7 +16,7 @@ function LoaderPage() {
   return (
     <div>
       <h1>Loadboard</h1>
-      <DataLoader loadData={loadUsers} render={
+      <DataLoader loadData={loadUsers} children={
         (state) => {
           return ( 
           <ol>

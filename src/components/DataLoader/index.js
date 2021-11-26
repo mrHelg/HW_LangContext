@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 
-/**
- * загружать данные
- * принимать рендер
- * 
- *  */
-
 class DataLoader extends Component {
   constructor(props) {
     super(props);
@@ -28,8 +22,8 @@ class DataLoader extends Component {
   componentDidMount(){ this.load()}
 
   render() {
-    const {render} = this.props;
-    return render(this.state);
+    const {children} = this.props;
+    return children(this.state);
   }
 }
 
