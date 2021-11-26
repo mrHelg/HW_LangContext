@@ -3,16 +3,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate } from "react-router-dom";
 import Calendar from './components/Calendar';
 import SignInForm from './components/SignInForm';
-function Dashboard() {
-  return (
-    <div>
-      
-      <h1>Dashboard</h1>
-      <Outlet />
-      <Link to="/">Home</Link>
-    </div>
-  );
-}
+import Dashboard from './pages/Dashboard';
+import CounterPage from './pages/CounterPage';
+
 function App(){
   return <>
   <BrowserRouter>
@@ -23,10 +16,12 @@ function App(){
         <li><Link to="/sign-in">sign in</Link></li>
         <li><Link to="/dash/messages">messages</Link></li>
         <li><Link to="/dash/tasks">tasks</Link></li>
+        <li><Link to="/counter">counter</Link></li>
       </ul>
     </nav>
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/counter" element={<CounterPage />} />
       <Route path="/calendar" element={<p>Calendar</p>} />
       <Route path="/sign-in" element={<SignInForm />} />
       <Route path="/dash/" element={<Dashboard />}>
