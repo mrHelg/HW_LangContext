@@ -20,10 +20,12 @@ class App extends Component{
     }
   }
   
+  setTheme = (theme) => {this.setState({theme})}
+
   render(){
     const {user, theme} = this.state;
     console.log(UserContext);
-    return <ThemeContext.Provider value={theme}>
+    return <ThemeContext.Provider value={[theme,this.setTheme]}>
       <UserContext.Provider value={user}>
         <Header />
         <Tree/>
