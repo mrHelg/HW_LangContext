@@ -1,49 +1,34 @@
 import './App.css';
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate } from "react-router-dom";
-import Calendar from './components/Calendar';
-import SignInForm from './components/SignInForm';
-import Dashboard from './pages/Dashboard';
-import CounterPage from './pages/CounterPage';
-import LoaderPage from './pages/LoaderPage';
+import React, {Component} from 'react';
+import {UserContext} from './context';
+import Header from './components/Header';
+import Tree from './components/Tree';
 
-function App(){
-  return <>
-  <BrowserRouter>
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/calendar">Calendar</Link></li>
-        <li><Link to="/sign-in">sign in</Link></li>
-        <li><Link to="/dash/messages">messages</Link></li>
-        <li><Link to="/dash/tasks">tasks</Link></li>
-        <li><Link to="/counter">counter</Link></li>
-        <li><Link to="/load">loader</Link></li>
-      </ul>
-    </nav>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/load" element={<LoaderPage />} />
-      <Route path="/counter" element={<CounterPage />} />
-      <Route path="/calendar" element={<p>Calendar</p>} />
-      <Route path="/sign-in" element={<SignInForm />} />
-      <Route path="/dash/" element={<Dashboard />}>
-        <Route  path="messages" element={<p>messages</p>} />
-        <Route path="tasks" element={<p>tasks</p>} />
-      </Route>
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
-    <p>&copy;2021</p>
-  </BrowserRouter>
-  </>;
+class App extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      user:{
+        id:1,
+        fname:'Elon',
+        sname:'Musk',
+        imgSrc:'https://i.insider.com/6171279833f4b300189ad407?width=700'
+      }
+    }
+  }
+  
+  render(){
+    const {user} = this.state;
+    console.log(UserContext);
+    return <UserContext.Provider value={user}>
+      <Header />
+      <Tree/>
+      </UserContext.Provider>;
+  }
+  
 }
 
-const Home = (props) =>{  return <h2>Home</h2>}
-const PageNotFound = (props) =>{ 
-    const navigate = useNavigate();
-    setTimeout(()=>{navigate(-1)}, 2000);
-    return <h2>404,  replace to home</h2>
-  }
+
 
 export default App;
 
