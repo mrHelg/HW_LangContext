@@ -1,10 +1,8 @@
 @import '../../common/styles/templates';
 
 .container{
-  display: flex;
-  justify-content: flex-end;
+  text-align: center;
 }
-
 .light{
   @extend %light;
 }

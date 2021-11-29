@@ -1,13 +1,16 @@
 import './App.css';
 import React, {Component} from 'react';
-import {UserContext} from './context';
+import {UserContext, ThemeContext} from './context';
 import Header from './components/Header';
 import Tree from './components/Tree';
+import CONSTANTS from './constants';
+const {THEMES} = CONSTANTS;
 
 class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      theme:THEMES.LIGHT,
       user:{
         id:1,
         fname:'Elon',
@@ -18,17 +21,17 @@ class App extends Component{
   }
   
   render(){
-    const {user} = this.state;
+    const {user, theme} = this.state;
     console.log(UserContext);
-    return <UserContext.Provider value={user}>
-      <Header />
-      <Tree/>
-      </UserContext.Provider>;
+    return <ThemeContext.Provider value={theme}>
+      <UserContext.Provider value={user}>
+        <Header />
+        <Tree/>
+        </UserContext.Provider>
+      </ThemeContext.Provider>;
   }
   
 }
-
-
 
 export default App;
 
