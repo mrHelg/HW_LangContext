@@ -1,13 +1,22 @@
 import React from 'react';
 import UserCard from '../UserCard';
+import CONSTANTS from '../../../constants';
+import { LangContext } from '../../../context';
+const { TITLES } = CONSTANTS;
 
 const Child = (props) => {
   return (
-    <div>
-      <h2>Child</h2>
-      <UserCard />
-    </div>
+    <LangContext>
+      {([lang]) => {
+        return (
+          <div>
+            <h2>{TITLES[lang].child}</h2>
+            <UserCard />
+          </div>
+        );
+      }}
+    </LangContext>
   );
-}
+};
 
 export default Child;
