@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import { WbSunny } from '@material-ui/icons';
 import { NightsStayRounded } from '@material-ui/icons';
-import { UserContext, ThemeContext } from '../../context';
+import { UserContext } from '../../context';
 import styles from './Header.module.scss';
 import CONSTANTS from '../../constants';
+import { WithTheme } from '../Tree/HOCs';
 const { THEMES } = CONSTANTS;
 
 const Header = (props) => {
@@ -33,16 +34,6 @@ const Header = (props) => {
         </header>
       )}
     </UserContext.Consumer>
-  );
-};
-
-const WithTheme = (InnerComponent) => (props) => {
-  return (
-    <ThemeContext.Consumer>
-      {([theme, setTheme]) => (
-        <InnerComponent theme={theme} setTheme={setTheme} />
-      )}
-    </ThemeContext.Consumer>
   );
 };
 

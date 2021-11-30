@@ -1,11 +1,10 @@
 import './App.css';
 import React, { Component } from 'react';
 import { UserContext, ThemeContext, LangContext } from './context';
-import Header from './components/Header';
-import Tree from './components/Tree';
 import CONSTANTS from './constants';
-import Footer from './components/Footer';
 import HeaderWithTheme from './components/Header';
+import FooterWithTheme from './components/Footer';
+import TreeWithTheme from './components/Tree';
 const { THEMES } = CONSTANTS;
 
 class App extends Component {
@@ -15,9 +14,10 @@ class App extends Component {
       theme: THEMES.LIGHT,
       user: {
         id: 1,
-        fname: 'Elon',
-        sname: 'Musk',
-        imgSrc: 'https://i.insider.com/6171279833f4b300189ad407?width=700',
+        fname: 'Olga',
+        sname: 'Kuprin',
+        imgSrc:
+          'https://mariokomi.ru/wp-content/uploads/krasivaya-devushka-v-ochkah.jpg',
       },
       lang: 'ru',
     };
@@ -37,8 +37,8 @@ class App extends Component {
         <ThemeContext.Provider value={[theme, this.setTheme]}>
           <UserContext.Provider value={user}>
             <HeaderWithTheme />
-            <Tree />
-            <Footer />
+            <TreeWithTheme />
+            <FooterWithTheme />
           </UserContext.Provider>
         </ThemeContext.Provider>
       </LangContext.Provider>
