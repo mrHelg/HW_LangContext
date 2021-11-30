@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Tree from './components/Tree';
 import CONSTANTS from './constants';
 import Footer from './components/Footer';
+import HeaderWithTheme from './components/Header';
 const { THEMES } = CONSTANTS;
 
 class App extends Component {
@@ -35,7 +36,7 @@ class App extends Component {
       <LangContext.Provider value={[lang, this.setLang]}>
         <ThemeContext.Provider value={[theme, this.setTheme]}>
           <UserContext.Provider value={user}>
-            <Header />
+            <HeaderWithTheme />
             <Tree />
             <Footer />
           </UserContext.Provider>
