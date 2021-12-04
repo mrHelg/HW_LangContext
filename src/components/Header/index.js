@@ -32,6 +32,6 @@ const Header = (props) => {
   );
 };
 
-const HeaderWithTheme = WithTheme(WithUser(Header));
+const HeaderExportComponent = WithTheme(WithUser(Header));
 
-export default HeaderWithTheme;
+export default HeaderExportComponent;

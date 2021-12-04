@@ -1,23 +1,20 @@
 import React from 'react';
-import { LangContext } from '../../../context';
 import Child from '../Child';
 import CONSTANTS from '../../../constants';
+import { WithLang } from '../HOCs';
 
 const { TITLES } = CONSTANTS;
 
 const Parent = (props) => {
+  const {lang} = props;
   return (
-    <LangContext>
-      {([lang]) => {
-        return (
-          <div>
-            <h2>{TITLES[lang].parent}</h2>
-            <Child />
-          </div>
-        );
-      }}
-    </LangContext>
+    <div>
+      <h2>{TITLES[lang].parent}</h2>
+      <Child />
+    </div>
   );
 };
 
-export default Parent;
+const ParentExportComponent = WithLang(Parent);
+
+export default ParentExportComponent;

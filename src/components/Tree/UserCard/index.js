@@ -1,29 +1,22 @@
 import React from 'react';
 import styles from './UserCard.module.scss';
-import { LangContext } from '../../../context';
 import CONSTANTS from '../../../constants';
-import { WithUser } from '../HOCs';
+import { WithLang, WithUser } from '../HOCs';
 const { TITLES } = CONSTANTS;
 
 const UserCard = (props) => {
-  const {user} = props;
+  const { user, lang } = props;
   return (
-    <LangContext>
-      {([lang]) => {
-        return (
-          <div className={styles.container}>
-            <h2>{TITLES[lang].userCard}</h2>
-            <p>
-              {user.fname} {user.sname}
-            </p>
-            <img src={user.imgSrc} className={styles.img} />
-          </div>
-        );
-      }}
-    </LangContext>
+    <div className={styles.container}>
+      <h2>{TITLES[lang].userCard}</h2>
+      <p>
+        {user.fname} {user.sname}
+      </p>
+      <img src={user.imgSrc} className={styles.img} />
+    </div>
   );
 };
 
-const UserCardWithUser = WithUser(UserCard);
+const UserCardExportComponent = WithUser(WithLang(UserCard));
 
-export default UserCardWithUser;
+export default UserCardExportComponent;
